@@ -1,0 +1,9 @@
+Computer Networks Final Project
+
+Multi-Threaded HTTP/1.0 Web Server
+
+Implemented using:
+- Python sockets
+- TCP
+- HTTP/1.0
+- Multi-threading
