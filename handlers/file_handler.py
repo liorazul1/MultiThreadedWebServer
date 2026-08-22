@@ -7,6 +7,9 @@ ALLOWED_DIRECTORIES = [
     "images"
 ]
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 # Validate the requested path and read the requested file
 def get_file_content(path):
 
@@ -28,9 +31,9 @@ def get_file_content(path):
         return "FORBIDDEN"
 
     file_path = os.path.join(
-        "static",
+        STATIC_ROOT,
         relative_path
-    )
+        )
 
     # Return None if the requested file does not exist
     if not os.path.isfile(file_path):
