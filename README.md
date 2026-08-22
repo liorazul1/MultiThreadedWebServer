@@ -5,7 +5,7 @@ This project implements a multi-threaded HTTP/1.0 web server from scratch using 
 The server accepts TCP client connections, parses HTTP requests, serves static files, detects MIME types, and generates appropriate HTTP responses. Multiple clients can be handled concurrently using threads.
 The project was developed as part of the Computer Networks course.
 
-## Gihub Link:
+## Github Link:
   https://github.com/maayaneshco/MultiThreadedWebServer
 
 ## Explanatory video:
@@ -125,8 +125,8 @@ The server implements several security mechanisms:
 ## Demo Video Link
 
 ## Group Members
-Hadar Yakuti 212695183.
-Maayan Eshco 207175761.
-Lior Azoulay 212326466.
+Hadar Yakuti.
+Maayan Eshco.
+Lior Azoulay.
 Computer Networks Course (863516901).
 Bar-Ilan University, 2026.
