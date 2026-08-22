@@ -11,6 +11,30 @@ def build_200_response(file_content, content_type):
 
     return headers.encode() + file_content
 
+# Build a 301 redirect response
+def build_301_response(location):
+
+    headers = (
+        "HTTP/1.0 301 Moved Permanently\r\n"
+        f"Location: {location}\r\n"
+        "Content-Length: 0\r\n"
+        "\r\n"
+    )
+
+    return headers.encode()
+
+
+# Build a 302 redirect response
+def build_302_response(location):
+
+    headers = (
+        "HTTP/1.0 302 Found\r\n"
+        f"Location: {location}\r\n"
+        "Content-Length: 0\r\n"
+        "\r\n"
+    )
+
+    return headers.encode()
 
 # Build a 404 response
 def build_404_response():
