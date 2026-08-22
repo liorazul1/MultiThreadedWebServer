@@ -64,9 +64,14 @@ def handle_client(client_socket, client_address):
             else:
 
                 # Determine the correct MIME type
+                content_type_path = request_info["path"]
+                
+                if content_type_path == "/":
+                    content_type_path = "/pages/index.html"
+                    
                 content_type = get_content_type(
-                    request_info["path"]
-                )
+                    content_type_path
+                    )
 
                 # Build a successful HTTP response
                 response = build_200_response(

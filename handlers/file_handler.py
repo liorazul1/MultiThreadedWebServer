@@ -13,6 +13,9 @@ def get_file_content(path):
     # Block directory traversal attempts
     if ".." in path:
         return "FORBIDDEN"
+    
+    if path == "/":
+        path = "/pages/index.html"
 
     relative_path = path.lstrip("/")
 
