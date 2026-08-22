@@ -9,6 +9,8 @@ from handlers.file_handler import get_file_content
 from handlers.mime_types import get_content_type
 from handlers.response_builder import (
     build_200_response,
+    build_301_response,
+    build_302_response,
     build_404_response,
     build_403_response,
     build_400_response,
@@ -47,37 +49,44 @@ def handle_client(client_socket, client_address):
             response = build_400_response()
 
         else:
-
-            # Locate and read the requested file
-            file_content = get_file_content(
-                request_info["path"]
-            )
-
-            if file_content == "FORBIDDEN":
-
-                response = build_403_response()
-
-            elif file_content is None:
-
-                response = build_404_response()
-
+            
+            if request_info["path"] == "/redirect301":
+                response = build_301_response("/pages/index.html")
+            elif request_info["path"] == "/redirect302":
+                response = build_302_response("/pages/index.html")
+                
             else:
 
-                # Determine the correct MIME type
-                content_type_path = request_info["path"]
-                
-                if content_type_path == "/":
-                    content_type_path = "/pages/index.html"
+                # Locate and read the requested file
+                file_content = get_file_content(
+                    request_info["path"]
+                )
+
+                if file_content == "FORBIDDEN":
+
+                    response = build_403_response()
+
+                elif file_content is None:
+
+                    response = build_404_response()
+
+                else:
+
+                    # Determine the correct MIME type
+                    content_type_path = request_info["path"]
                     
-                content_type = get_content_type(
-                    content_type_path
+                    if content_type_path == "/":
+                        content_type_path = "/pages/index.html"
+                        
+                    content_type = get_content_type(
+                        content_type_path
                     )
 
-                # Build a successful HTTP response
-                response = build_200_response(
-                    file_content,
-                    content_type
-                )
+                    # Build a successful HTTP response
+                    response = build_200_response(
+                        file_content,
+                        content_type
+                    )
 
         # Send the HTTP response back to the client
         client_socket.sendall(response)
