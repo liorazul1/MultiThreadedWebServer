@@ -56,6 +56,8 @@ def handle_client(client_socket, client_address):
                 response = build_302_response("/pages/index.html")
             elif request_info["path"] == "/badrequest":
                 response = build_400_response()
+            elif request_info["path"] == "/malformed":
+                response = b"HTTP/1.0 200 OK\r\nContent-Length: 5\r\n"
                 
             else:
 
