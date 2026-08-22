@@ -54,6 +54,8 @@ def handle_client(client_socket, client_address):
                 response = build_301_response("/pages/index.html")
             elif request_info["path"] == "/redirect302":
                 response = build_302_response("/pages/index.html")
+            elif request_info["path"] == "/badrequest":
+                response = build_400_response()
                 
             else:
 
