@@ -17,9 +17,9 @@ def get_file_content(path):
     if ".." in path:
         return "FORBIDDEN"
     
-    if path == "/":
+    if path in ("/", "/index.html"):
         path = "/pages/index.html"
-
+        
     relative_path = path.lstrip("/")
 
     path_parts = relative_path.split("/")

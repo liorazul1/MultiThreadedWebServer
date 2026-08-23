@@ -79,7 +79,7 @@ def handle_client(client_socket, client_address):
                     # Determine the correct MIME type
                     content_type_path = request_info["path"]
                     
-                    if content_type_path == "/":
+                    if content_type_path in ("/", "/index.html"):
                         content_type_path = "/pages/index.html"
                         
                     content_type = get_content_type(
